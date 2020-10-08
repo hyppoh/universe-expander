@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <title>Universe Expander</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link id="style" rel="stylesheet" href="/style.css">
+
+    <!-- import the webpage's javascript files -->
+    <script src="javascript/OmegaNum.js" defer></script>
+    <script src="javascript/achievements.js" defer></script>
+    <script src="javascript/neutrinos.js" defer></script>
+    <script src="javascript/extra.js" defer></script>
+    <script src="javascript/basis.js" defer></script>
+    <script src="javascript/photons.js" defer></script>
+    <script src="javascript/antiquarks.js" defer></script>
+    <script src="javascript/heatdeath.js" defer></script>
+    <script src="javascript/dupli.js" defer></script>
+    <script src="javascript/battery.js" defer></script>
+    <script src="javascript/script.js" defer></script>
+  </head> <!-- oh god so many js files -->
+  <body>
+    <table id="metaTabs">
+      <tr>
+        <td><button id="ch1Tab" onclick="showMetaTab('main')">Chapter 1</button></td>
+        <td><button id="ch2Tab" onclick="showMetaTab('ch2')">Chapter 2</button></td>
+      </tr>
+    </table>
+    <div id="main" class="metatab" style="width: 100%">
+      <table>
+      <tr>
+        <td><button onclick="showTab('main')">Main</button></td>
+        <td><button onclick="showTab('options')">Options</button></td>
+        <td><button onclick="showTab('ch1Achievements')">Achievements</button></td>
+        <td><button id="quarktabbtn" onclick="showTab('quarks')">Quarks</button></td>
+        <td><button id="hadrontabbtn" onclick="showTab('hadrons')">Hadrons</button></td>
+        <td><button id="annihilationtabbtn" onclick="showTab('annihilation')">Annihilation</button></td>
+        <td><button id="voidtabbtn" onclick="showTab('void')">The Void</button></td>
+        <td><button id="photontabbtn" onclick="showTab('photons')">Photons</button></td>
+        <td><button id="antiquarkstabbtn" onclick="showTab('antiquarks')">Anti-Quarks</button></td>
+        <td><button id="duplitabbtn" onclick="showTab('dupli')">Duplicators</button></td>
+        <td><button id="batterytabbtn" onclick="showTab('battery')">Battery</button></td>
+      </tr>
+    </table>
+    <div id="options" class="tab">
+      <br>
+      <button onclick="hardReset()" class="options">HARD RESET</button>&nbsp;&nbsp;<button id="autosave" onclick="toggleAutosave()" class="options"></button><br><br>
+      <button onclick="exportSave()" class="options">Export</button>&nbsp;&nbsp;<button onclick="importSave()" class="options">Import</button><br><br>
+      <button onclick="save()" class="options">Save</button>
+      <button onclick="changeTheme()" class="options">Switch Theme</button><br><br>
+      Join the discord server <a href="https://discord.gg/xbU3vFE">here.</a>
+    </div>
+    <div id="main" class="tab">
+      <span id="universeSlowDown"></span><br>
+      Your <span id="universeType"></span>universe is currently <span id="universeSize"></span> big.
+      <button id="prestige" onclick="prestige()">Reach <span id="prestigeGoal"></span> to reach depth <span id="prestigeDepth"></span> of prestige.</button><br><br>
+      <div id="prestigeDiv">
+        You have completed <span id="prestigeDepths"></span><span id="prestigeDepthName"></span> prestige depths, translated to a <span id="prestigeEff"></span>x multiplier to universe growth speed.<br>
+
+        You have <span id="prestigePoints"></span> prestige points.<br>
+        <button id="unlockPrestUpgrs" onclick="unlockPrestigeUpgrades()" class="prestUpgrs">Unlock Prestige Upgrades.<br>Cost: 10 Prestige Points</button><br>
+      </div><br><br>
+      <div id="prestigeUpgrs">
+        <button id="respec" onclick="respecPrestUpgs()">Respec Prestige Upgrades</button>&nbsp;&nbsp; <button id="respecConf" onclick="togglePrestRespecConf()">Respec Confirm: ON</button>&nbsp;&nbsp;<button id="maxAllPU" onclick="maxAllPUs()">MAX ALL</button><br><br>
+        <button id="prestUpgrs1" onclick="buyPrestUpgrs(1)" class="prestUpgrs">Subtract <span id="PU1each"></span> depths from the goal of prestige.<br>Cost: <span id="prestUpgrs1Cost"></span> prestige points<br>Level: <span id="prestUpgrs1Lvl"></span><br>Currently: <span id="prestUpgrs1Desc"></span></button>
+        <button id="prestUpgrs2" onclick="buyPrestUpgrs(2)" class="prestUpgrs">Universe Slowdown starts 0.2x later (additive).<br>Cost: <span id="prestUpgrs2Cost"></span> prestige points<br>Level: <span id="prestUpgrs2Lvl"></span><br>Currently: <span id="prestUpgrs2Desc"></span></button>
+        <button id="prestUpgrs3" onclick="buyPrestUpgrs(3)" class="prestUpgrs">Improve the depth power effect.<br>Cost: <span id="prestUpgrs3Cost"></span> prestige points<br>Level: <span id="prestUpgrs3Lvl"></span><br>Currently: <span id="prestUpgrs3Desc"></span></button><br>
+        <button id="prestUpgrs4" onclick="buyPrestUpgrs(4)" class="prestUpgrs">Gain 10% more of all quarks.<br>Cost: <span id="prestUpgrs4Cost"></span> prestige points<br>Level: <span id="prestUpgrs4Lvl"></span><br>Currently: <span id="prestUpgrs4Desc"></span></button>
+        <button id="prestUpgrs5" onclick="buyPrestUpgrs(5)" class="prestUpgrs">The Gluon grows 50% faster.<br>Cost: <span id="prestUpgrs5Cost"></span> prestige points<br>Level: <span id="prestUpgrs5Lvl"></span><br>Currently: <span id="prestUpgrs5Desc"></span></button>
+        <button id="prestUpgrs6" onclick="buyPrestUpgrs(6)" class="prestUpgrs">The Gluon effect is stronger.<br>Cost: <span id="prestUpgrs6Cost"></span> prestige points<br>Level: <span id="prestUpgrs6Lvl"></span><br>Currently: <span id="prestUpgrs6Desc"></span></button><br>
+        <button id="prestUpgrs7" onclick="buyPrestUpgrs(7)" class="prestUpgrs">The Gluon grows faster based on your Hadrons<br>Cost: <span id="prestUpgrs7Cost"></span> prestige points<br>Level: <span id="prestUpgrs7Lvl"></span><br>Currently: <span id="prestUpgrs7Desc"></span></button>
+        <button id="prestUpgrs8" onclick="buyPrestUpgrs(8)" class="prestUpgrs">Boosters increase Hadron gain.<br>Cost: <span id="prestUpgrs8Cost"></span> prestige points<br>Level: <span id="prestUpgrs8Lvl"></span><br>Currently: <span id="prestUpgrs8Desc"></span></button>
+        <button id="prestUpgrs9" onclick="buyPrestUpgrs(9)" class="prestUpgrs">Red Quarks give free levels on PU3.<br>Cost: <span id="prestUpgrs9Cost"></span> prestige points<br>Level: <span id="prestUpgrs9Lvl"></span><br>Currently: <span id="prestUpgrs9Desc"></span></button><br>
+        <button id="prestUpgrs10" onclick="buyPrestUpgrs(10)" class="prestUpgrs">Blue Quarks boost the Gluon effect<br>Cost: <span id="prestUpgrs10Cost"></span> prestige points<br>Level: <span id="prestUpgrs10Lvl"></span><br>Currently: <span id="prestUpgrs10Desc"></span></button>
+        <button id="prestUpgrs11" onclick="buyPrestUpgrs(11)" class="prestUpgrs">Green Quarks boost Hadron gain<br>Cost: <span id="prestUpgrs11Cost"></span> prestige points<br>Level: <span id="prestUpgrs11Lvl"></span><br>Currently: <span id="prestUpgrs11Desc"></span></button>
+        <button id="prestUpgrs12" onclick="buyPrestUpgrs(12)" class="prestUpgrs">The Gluon makes PU1 stronger<br>Cost: <span id="prestUpgrs12Cost"></span> prestige points<br>Level: <span id="prestUpgrs12Lvl"></span><br>Currently: <span id="prestUpgrs12Desc"></span></button>
+      </div><br>
+        <button id="unlockQuarks" onclick="unlockQuarks()">Unlock Quarks.<br>Req: 8 Depths</button><br>
+        <button id="unlockHadrons" onclick="unlockHadrons()">Unlock Hadrons.<br>Cost: 100 m Gluon</button><br>
+    </div>
+    <div id="quarks" class="tab">
+      You have <span id="quarksRed"></span> red quarks, providing a <span id="quarksRedMult"></span>x boost to blue quark gain.<br>
+      You have <span id="quarksBlue"></span> blue quarks, providing a <span id="quarksBlueMult"></span>x boost to green quark gain.<br>
+      You have <span id="quarksGreen"></span> green quarks, providing a <span id="quarksGreenMult"></span>x boost to red quark gain.<br>
+      <br>The gluon is <span id="gluonLength" class="gluon"></span> long, multiplying universe growth by <span id="gluonPower" class="gluon"></span> <span id="gluonSC"></span>
+    </div>
+    <div id="hadrons" class="tab">
+      You have <span id="hadronAmt"></span> hadrons, multiplying the beginning of Universal Slowdown and Universal Compaction by <span id="hadronPower"></span>.<br>
+      You have <span id="boosterAmt"></span> hadronic boosters, raising Gluon and Quark power by <span id="boosterPower"></span>.<br>
+      <button id="buyBooster" onclick="buyBooster()">Buy 1 booster.<br>Cost: <span id="boosterCost"></span> hadrons</button>
+    </div>
+    <div id="annihilation" class="tab">
+      <br><br>
+      <button id="annihilate" class="annihilate" onclick="annihilate()"></button><br><br>
+      <span id="annihilateCap" class="annihilateTxt"></span><br><br>
+      <div id="annihilateContent">
+        You have <span id="annEnergy" class="annihilateTxt"></span> Annihilation Energy, which boosts the Prestige Depth effect by ^<span id="annEnergyEff" class="annihilateTxt"></span>, and the universe grows <span id="annEnergyEff2" class="annihilateTxt"></span>x faster (boosted by your Prestige Depth).<br><br>
+        <table>
+          <tr>
+            <td><button id="annihilateUpg1" onclick="buyAnnihilateUpg(1)">Prestige Point gain is doubled<br>Cost: <span id="annihilateUpg1Cost"></span> Annihilation Energy</button></td>
+            <td><button id="annihilateUpg2" onclick="buyAnnihilateUpg(2)">Annihilation Energy boosts the Hadronic Booster effect<br>Cost: <span id="annihilateUpg2Cost"></span> Annihilation Energy<br>Currently: <span id="annihilateUpg2Current"></span>x</button></td>
+            <td><button id="annihilateUpg3" onclick="buyAnnihilateUpg(3)">Start with Prestige Upgrades unlocked on reset<br>Cost: <span id="annihilateUpg3Cost"></span> Annihilation Energy</button></td>
+            <td><button id="annihilateUpg4" onclick="buyAnnihilateUpg(4)">The Gluon & Hadrons grow 10x as fast<br>Cost: <span id="annihilateUpg4Cost"></span> Annihilation Energy</button></td>
+            <td><button id="annihilateUpg5" onclick="buyAnnihilateUpg(5)">Start with Quarks, Hadrons, and all Prestige Upgrades unlocked<br>Cost: <span id="annihilateUpg5Cost"></span> Annihilation Energy</button></td>
+            <td><button id="annihilateUpg6" onclick="buyAnnihilateUpg(6)">Hadronic Boosters add to the Hadron effect<br>Cost: <span id="annihilateUpg6Cost"></span> Annihilation Energy<br>Currently: +<span id="annihilateUpg6Current"></span></button></td>
+          </tr>
+          <tr>
+            <td><button id="annihilateUpg7" onclick="buyAnnihilateUpg(7)">The Gluon boosts Quark gain<br>Cost: <span id="annihilateUpg7Cost"></span> Annihilation Energy<br>Currently: <span id="annihilateUpg7Current"></span>x</button><br></td>
+            <td><button id="annihilateUpg8" onclick="buyAnnihilateUpg(8)">You can automatically complete Prestige Depths<br>Cost: <span id="annihilateUpg8Cost"></span> Annihilation Energy</button><br><button id="autoLayer" class="auto" onclick="toggleAutoLayers()"></button></td>
+            <td><button id="annihilateUpg9" onclick="buyAnnihilateUpg(9)">You can automatically buy Hadronic Boosts<br>Cost: <span id="annihilateUpg9Cost"></span> Annihilation Energy</button><br><button id="autoHadBoost" class="auto" onclick="toggleAutoHadBoosts()"></button></td>
+            <td><button id="annihilateUpg10" onclick="buyAnnihilateUpg(10)">Hadrons add free PU2 levels<br>Cost: <span id="annihilateUpg10Cost"></span> Annihilation Energy<br>Currently: +<span id="annihilateUpg10Current"></span></button><br></td>
+            <td><button id="annihilateUpg11" onclick="buyAnnihilateUpg(11)">Universal Compaction starts 100% later<br>Cost: <span id="annihilateUpg11Cost"></span> Annihilation Energy<br></button></td>
+            <td><button id="annihilateUpg12" onclick="buyAnnihilateUpg(12)" style="font-size: 11px;">Keep Prestige Upgrades on reset, but you don't gain Prestige Points when below your best Prestige Depth<br>Cost: <span id="annihilateUpg12Cost"></span> Annihilation Energy<br></button></td>
+          </tr>
+          <tr id="aRow3">
+            <td><button id="annihilateUpg13" onclick="buyAnnihilateUpg(13)">AU12 no longer disables Prestige Point gain below your best Prestige Depth<br>Cost: <span id="annihilateUpg13Cost"></span> Annihilation Energy</button></td>
+            <td><button id="annihilateUpg14" onclick="buyAnnihilateUpg(14)">Prestiging does not reset anything<br>Cost: <span id="annihilateUpg14Cost"></span> Annihilation Energy</button></td>
+            <td><button id="annihilateUpg15" onclick="buyAnnihilateUpg(15)">Gain free Hadronic Boosters based on your spent Prestige Points<br>Cost: <span id="annihilateUpg15Cost"></span> Annihilation Energy<br>Currently: +<span id="annihilateUpg15Current"></span></button></td>
+            <td><button id="annihilateUpg16" onclick="buyAnnihilateUpg(16)">Annihilation Energy gain is boosted by your Universe size<br>Cost: <span id="annihilateUpg16Cost"></span> Annihilation Energy<br>Currently: <span id="annihilateUpg16Current"></span>x</button></td>
+            <td><button id="annihilateUpg17" onclick="buyAnnihilateUpg(17)">Unlock Auto-Annihilation<br>Cost: <span id="annihilateUpg17Cost"></span> Annihilation Energy</button><br><button id="autoAnn" class="auto" onclick="toggleAutoAnn()"></button><br>Amount: <input id="autoAnnInput" type="text" onchange="updateAutoAnn()" size="9"></input></td>
+            <td><button id="annihilateUpg18" onclick="buyAnnihilateUpg(18)">The Hadronic Booster cost formula is 20% weaker<br>Cost: <span id="annihilateUpg18Cost"></span> Annihilation Energy</button></td>
+          </tr>
+        </table><br><br>
+        <button id="voidUnl" onclick="unlockVoid()">Unlock Void<br>Req: 2.5e+3 Annihilation Energy</button>
+      </div>
+    </div>
+    <div id="void" class="tab">
+      <br><br>
+      <button id="sacrificeVoid" onclick="sacrificeToVoid()">Sacrifice your Annihilation Energy to The Void<br>+<span id="voidGain"></span> Void Power<br>Next at <span id="nextVP"></span> Annihilation Energy</button><br><br>
+      You have <span id="voidPower" class="voidTxt"></span> Void Power<br><br>
+      You have <span id="spaceTime" class="voidTxt"></span> of Space-Time Fabric.<br><br>
+      <table>
+        <tr>
+          <td><button id="voidUpg1" onclick="buyVoidUpg(1)">Void Power gain is doubled<br>Cost: <span id="voidUpg1Cost"></span> of Space-Time Fabric<br>Level: <span id="voidUpg1Level"></span><br>Currently: <span id="voidUpg1Eff"></span>x</button></td>
+          <td><button id="voidUpg2" onclick="buyVoidUpg(2)">Increase quark and space-time fabric gain by 50%<br>Cost: <span id="voidUpg2Cost"></span> of Space-Time Fabric<br>Level: <span id="voidUpg2Level"></span><br>Currently: <span id="voidUpg2Eff"></span>x</button></td>
+          <td><button id="voidUpg3" onclick="buyVoidUpg(3)">Triple hadron and Annihilation Energy gain<br>Cost: <span id="voidUpg3Cost"></span> of Space-Time Fabric<br>Level: <span id="voidUpg3Level"></span><br>Currently: <span id="voidUpg3Eff"></span>x</button></td>
+        </tr>
+        <tr>
+          <td><button id="voidUpg4" onclick="buyVoidUpg(4)">The Hadronic Booster cost formula is 5% better, and you can bulk Prestige Depths.<br>Cost: <span id="voidUpg4Cost"></span> of Space-Time Fabric</button></td>
+          <td><button id="voidUpg5" onclick="buyVoidUpg(5)">You get free Hadronic Boosters based on Space-Time Fabric<br>Cost: <span id="voidUpg5Cost"></span> of Space-Time Fabric<br>Currently: +<span id="voidUpg5Eff"></span></button></td>
+          <td><button id="voidUpg6" onclick="buyVoidUpg(6)">The Gluon grows faster based on Space-Time Fabric<br>Cost: <span id="voidUpg6Cost"></span> of Space-Time Fabric<br>Currently: <span id="voidUpg6Eff"></span>x</button></td>
+        </tr>
+        <tr id="voidRow3">
+          <td><button id="voidUpg7" onclick="buyVoidUpg(7)">Gain free levels to all prestige upgrades based on your Void Power<br>Cost: <span id="voidUpg7Cost"></span> of Space-Time Fabric<br>Currently: +<span id="voidUpg7Eff"></span></button></td>
+          <td><button id="voidUpg8" onclick="buyVoidUpg(8)">Purple Photons boost Photonic Matter gain<br>Cost: <span id="voidUpg8Cost"></span> of Space-Time Fabric<br>Currently: <span id="voidUpg8Eff"></span>x</button></td>
+          <td><button id="voidUpg9" onclick="buyVoidUpg(9)">Space-Time Fabric boosts Green Photon gain, and the Green Photon effect uses a stronger formula<br>Cost: <span id="voidUpg9Cost"></span> of Space-Time Fabric<br>Currently: <span id="voidUpg9Eff"></span>x</button></td>
+        </tr>
+        <tr id="voidRow4">
+          <td><button id="voidUpg10" onclick="buyVoidUpg(10)">The Gluon doesn't reset, and boosts Photonic Matter production.<br>Cost: <span id="voidUpg10Cost"></span> of Space-Time Fabric<br>Currently: <span id="voidUpg10Eff"></span>x</button></td>
+          <td><button id="voidUpg11" onclick="buyVoidUpg(11)">Total Photonic Boosters boost Space-Time Fabric production.<br>Cost: <span id="voidUpg11Cost"></span> of Space-Time Fabric<br>Currently: <span id="voidUpg11Eff"></span>x</button></td>
+          <td><button id="voidUpg12" onclick="buyVoidUpg(12)">Orange Photons boost Void Power gain<br>Cost: <span id="voidUpg12Cost"></span> of Space-Time Fabric<br>Currently: <span id="voidUpg12Eff"></span>x</button></td>
+        </tr>
+      </table><br><br>
+        <button id="photonUnl" onclick="unlockPhotons()">Unlock Photons<br>Req: 1e+10 Void Power</button>
+    </div>
+    <div id="photons" class="tab" style="width: 100%">
+      <br><br>
+      You have <span id="photonicMatter" class="light"></span> Photonic Matter, which is generating all the below colored Photons.<br>
+      <button id="antiquarkUnl" onclick="unlockAntiquarks()">Unlock Anti-Quarks<br>Req: 60 Prestige Depths</button><br><br>
+      <tr>
+        <td><span style="width: 33.3%; min-height: 250px; background-color: #8f3333; float: left; color: white; text-align: center;"><h2 style="color: #4a050d">Red Photons</h2><br>Amount: <span style="color: #4a050d; font-weight: bold;" id="photonsRedAmount"></span><br><br>Effect: Boosts the power of prestige upgrade 1 by <span id="photonsRedMultiplier"></span>x.<br>
+          <button id="photonBoostRed" onclick="buyPBooster(0)">Buy 1 Red Photonic Booster<br>Cost: <span id="redPhotonBoostCost"></span> Photonic Matter<br></button><br>
+          Boosters: <span id="redBoosterAmt"></span><br>Gain multiplier: <span id="redBoosterPower"></span></span></td>
+        <td><span style="width: 33.3%; min-height: 250px; background-color: #8f6733; float: left; color: white; text-align: center;"><h2 style="color: #4d2b03">Orange Photons</h2><br>Amount: <span style="color: #4d2b03; font-weight: bold;" id="photonsOrangeAmount"></span><br><br>Effect: Boosts the power of repeatable void upgrades by <span id="photonsOrangeMultiplier"></span>%.<br>
+          <button id="photonBoostOrange" onclick="buyPBooster(1)">Buy 1 Orange Photonic Booster<br>Cost: <span id="orangePhotonBoostCost"></span> Photonic Matter<br></button><br>
+          Boosters: <span id="orangeBoosterAmt"></span><br>Gain multiplier: <span id="orangeBoosterPower"></span></span></td>
+        <td><span style="width: 33.3%; min-height: 250px; background-color: #8f8c33; float: left; color: white; text-align: center;"><h2 style="color: #3f4a04">Yellow Photons</h2><br>Amount: <span style="color: #3f4a04; font-weight: bold;" id="photonsYellowAmount"></span><br><br>Effect: Reduces the cost of the repeatable Void Upgrades by /<span id="photonsYellowMultiplier"></span>.<br>
+          <button id="photonBoostYellow" onclick="buyPBooster(2)">Buy 1 Yellow Photonic Booster<br>Cost: <span id="yellowPhotonBoostCost"></span> Photonic Matter<br></button><br>
+          Boosters: <span id="yellowBoosterAmt"></span><br>Gain multiplier: <span id="yellowBoosterPower"></span></span></td>
+      </tr>
+      <tr>
+        <td><span style="width: 50%; min-height: 250px; background-color: #338f41; float: left; color: white; text-align: center;"><h2 style="color: #baffcb">Green Photons</h2><br>Amount: <span style="color: #baffcb; font-weight: bold;" id="photonsGreenAmount"></span><br><br>Effect: Boosts the power of annihilation upgrade 10 by <span id="photonsGreenMultiplier"></span>x.<br>
+          <button id="photonBoostGreen" onclick="buyPBooster(3)">Buy 1 Green Photonic Booster<br>Cost: <span id="greenPhotonBoostCost"></span> Photonic Matter<br></button><br>
+          Boosters: <span id="greenBoosterAmt"></span><br>Gain multiplier: <span id="greenBoosterPower"></span></span></td>
+        <td><span style="width: 50%; min-height: 250px; background-color: #33598f; float: left; color: white; text-align: center;"><h2 style="color: #c1bfff">Blue Photons</h2><br>Amount: <span style="color: #c1bfff; font-weight: bold;" id="photonsBlueAmount"></span><br><br>Effect: Boosts the gain of Gluon length by <span id="photonsBlueMultiplier"></span>x.<br>
+          <button id="photonBoostBlue" onclick="buyPBooster(4)">Buy 1 Blue Photonic Booster<br>Cost: <span id="bluePhotonBoostCost"></span> Photonic Matter<br></button><br>
+          Boosters: <span id="blueBoosterAmt"></span><br>Gain multiplier: <span id="blueBoosterPower"></span></span></td>
+      </tr>
+      <tr>
+        <td><span style="width: 100%; min-height: 250px; background-color: #7b338f; float: left; color: white; text-align: center;"><h2 style="color: #e2baf7">Purple Photons</h2><br>Amount: <span style="color: #e2baf7; font-weight: bold;" id="photonsPurpleAmount"></span><br><br>Effect: Boosts the gain of the other photons by <span id="photonsPurpleMultiplier"></span>x.<br>
+          <button id="photonBoostPurple" onclick="buyPBooster(5)">Buy 1 Meta Photonic Booster<br>Cost: <span id="purplePhotonBoostCost"></span> Photonic Matter<br></button><br>
+          Boosters: <span id="purpleBoosterAmt"></span><br>Photonic Matter multiplier: <span id="purpleBoosterPower"></span></td>
+      </tr>
+    </div>
+    <div id="antiquarks" class="tab">
+      You have <span id="antiquarksRed"></span> anti-red quarks, providing a <span id="antiquarksRedMult"></span>x boost to anti-blue quark gain.<br>
+      You have <span id="antiquarksBlue"></span> anti-blue quarks, providing a <span id="antiquarksBlueMult"></span>x boost to anti-green quark gain.<br>
+      You have <span id="antiquarksGreen"></span> anti-green quarks, providing a <span id="antiquarksGreenMult"></span>x boost to anti-red quark gain.<br>
+      <br>The anti-gluon is <span id="antigluonLength"></span> long, boosting Photonic Matter gain by <span id="antigluonPower"></span>x.
+      <br>You have <span id="antienergy"></span> anti-energy.<br><br>
+      <table>
+        <tr>
+          <td><button id="antiUpg1" class="antiEnergyUpgBase" onclick="buyAntiUpg(1)">Anti-Energy generation is boosted by your Photonic Matter<br>Cost: <span id="antiUpg1cost"></span> Anti-Energy<br>Currently: <span id="antiUpg1eff"></span>x</button></td>
+          <td><button id="antiUpg2" class="antiEnergyUpgBase" onclick="buyAntiUpg(2)">Hadronic Boosters increase the gain of Anti-Gluon length<br>Cost: <span id="antiUpg2cost"></span> Anti-Energy<br>Currently: <span id="antiUpg2eff"></span>x</button></td>
+          <td><button id="antiUpg3" class="antiEnergyUpgBase" onclick="buyAntiUpg(3)">All Anti-Quark effects are squared<br>Cost: <span id="antiUpg3cost"></span> Anti-Energy</button></td>
+          <td><button id="antiUpg7" class="antiEnergyUpgBase" onclick="buyAntiUpg(7)">Blue Photons boost the Anti-Gluon with a reduced effect.<br>Cost: <span id="antiUpg7cost"></span> Anti-Energy<br>Currently: <span id="antiUpg7eff"></span>x</button></td>
+          <td><button id="antiUpg21" class="antiEnergyUpgBase" onclick="buyAntiUpg(21)">Duplicators increase faster.<br>Cost: <span id="antiUpg21cost"></span> Anti-Energy</button></td>
+        </tr>
+        <tr>
+          <td><button id="antiUpg4" class="antiEnergyUpgBase" onclick="buyAntiUpg(4)">Anti-Quark gain is boosted by Normal Quarks<br>Cost: <span id="antiUpg4cost"></span> Anti-Energy<br>Currently: <span id="antiUpg4eff"></span>x</button></td>
+          <td><button id="antiUpg5" class="antiEnergyUpgBase" onclick="buyAntiUpg(5)">Meta Photonic Boosters are stronger based on their amount<br>Cost: <span id="antiUpg5cost"></span> Anti-Energy<br>Currently: <span id="antiUpg5eff"></span>x</button></td>
+          <td><button id="antiUpg6" class="antiEnergyUpgBase" onclick="buyAntiUpg(6)">Red Photonic Boosters are cheaper based on your Void Power<br>Cost: <span id="antiUpg6cost"></span> Anti-Energy<br>Currently: /<span id="antiUpg6eff"></span></button></td>
+          <td><button id="antiUpg9" class="antiEnergyUpgBase" onclick="buyAntiUpg(9)">Purple Photons are boosted by Anti-Green Quarks<br>Cost: <span id="antiUpg9cost"></span> Anti-Energy<br>Currently: <span id="antiUpg9eff"></span>x</button></td>
+          <td><button id="antiUpg22" class="antiEnergyUpgBase" onclick="buyAntiUpg(22)">Purple Photons make Duplicator Food cheaper.<br>Cost: <span id="antiUpg22cost"></span> Anti-Energy<br>Currently: /<span id="antiUpg22eff"></span></button></td>
+        </tr>
+        <tr>
+          <td><button id="antiUpg8" class="antiEnergyUpgBase" onclick="buyAntiUpg(8)">Anti-Energy generation is boosted by your Anti-Gluon length<br>Cost: <span id="antiUpg8cost"></span> Anti-Energy<br>Currently: <span id="antiUpg8eff"></span>x</button></td>
+          <td><button id="antiUpg10" class="antiEnergyUpgBase" onclick="buyAntiUpg(10)">You gain more Prestige Points at each Depth based on your Annihilation Energy<br>Cost: <span id="antiUpg10cost"></span> Anti-Energy<br>Currently: <span id="antiUpg10eff"></span>x</button></td>
+          <td><button id="antiUpg11" class="antiEnergyUpgBase" onclick="buyAntiUpg(11)">Purple Photons are gained faster based on your Meta Photonic Boosters<br>Cost: <span id="antiUpg11cost"></span> Anti-Energy<br>Currently: <span id="antiUpg11eff"></span>x</button></td>
+          <td><button id="antiUpg12" class="antiEnergyUpgBase" onclick="buyAntiUpg(12)">You gain Prestige Points over time based on your Prestige Depth (is boosted by Prestige Point gain multipliers)<br>Cost: <span id="antiUpg12cost"></span> Anti-Energy<br>Currently: +<span id="antiUpg12eff"></span>/s</button></td>
+          <td><button id="antiUpg23" class="antiEnergyUpgBase" onclick="buyAntiUpg(23)">Void Upgrade 2 affects Anti-Quark Gain to a severely reduced effect.<br>Cost: <span id="antiUpg23cost"></span> Anti-Energy<br>Currently: <span id="antiUpg23eff"></span>x</button></td>
+        </tr>
+        <tr>
+          <td><button id="antiUpg13" class="antiEnergyUpgBase" onclick="buyAntiUpg(13)">Anti-Energy boosts Space-Time Fabric gain.<br>Cost: <span id="antiUpg13cost"></span> Anti-Energy<br>Currently: <span id="antiUpg13eff"></span>x</button></td>
+          <td><button id="antiUpg14" class="antiEnergyUpgBase" onclick="buyAntiUpg(14)">Anti-Energy boosts universe growth speed.<br>Cost: <span id="antiUpg14cost"></span> Anti-Energy<br>Currently: <span id="antiUpg14eff"></span>x</button></td>
+          <td><button id="antiUpg15" class="antiEnergyUpgBase" onclick="buyAntiUpg(15)">Divide the cost of all photonic boosters by 100 and multiply the gain of all photons by 50.<br>Cost: <span id="antiUpg15cost"></span> Anti-Energy</button></td>
+          <td><button id="antiUpg16" class="antiEnergyUpgBase" onclick="buyAntiUpg(16)">The Gluon Stretching nerf is weaker based on your Prestige Depth.<br>Cost: <span id="antiUpg16cost"></span> Anti-Energy<br>Currently: /<span id="antiUpg16eff"></span></button></td>
+          <td><button id="antiUpg24" class="antiEnergyUpgBase" onclick="buyAntiUpg(24)">Duplicator Food is spent slower based on total Duplicator Food.<br>Cost: <span id="antiUpg24cost"></span> Anti-Energy<br>Currently: /<span id="antiUpg24eff"></span></button></td>
+        </tr>
+        <tr>
+          <td><button id="antiUpg17" class="antiEnergyUpgBase" onclick="buyAntiUpg(17)">The first Duplicator effect uses a better formula<br>Cost: <span id="antiUpg17cost"></span> Anti-Energy</button></td>
+          <td><button id="antiUpg18" class="antiEnergyUpgBase" onclick="buyAntiUpg(18)">Space-Time Fabric makes Duplicator Food cheaper, and Void Power sacrifice doesn't reset anything.<br>Cost: <span id="antiUpg18cost"></span> Anti-Energy<br>Currently: /<span id="antiUpg18eff"></span></button></td>
+          <td><button id="antiUpg19" class="antiEnergyUpgBase" onclick="buyAntiUpg(19)">Purple Photons boost Anti-Energy gain.<br>Cost: <span id="antiUpg19cost"></span> Anti-Energy<br>Currently: <span id="antiUpg19eff"></span>x</button></td>
+          <td><button id="antiUpg20" class="antiEnergyUpgBase" onclick="buyAntiUpg(20)">The Anti-Gluon boosts Anti-Energy gain.<br>Cost: <span id="antiUpg20cost"></span> Anti-Energy<br>Currently: <span id="antiUpg20eff"></span>x</button></td>
+          <td><button id="antiUpg25" class="antiEnergyUpgBase" onclick="buyAntiUpg(25)">Void Upgrades are 75% more powerful.<br>Cost: <span id="antiUpg25cost"></span> Anti-Energy</button></td>
+        </tr>
+      </table>
+      <button id="dupliUnl" onclick="unlDupli()">Unlock Duplicators<br>Req: 16 Anti-Energy Upgrades bought</button>
+      <button id="batteryUnl" onclick="unlockBattery()">Unlock the Battery<br>Req: 25 Anti-Energy Upgrades bought</button>
+    </div>
+    <div id="dupli" class="tab">
+      <br><br>
+      You have <span id="dupliAmt"></span> Duplicators<br>
+      <div id="dupliDescs"></div><br>
+      You have <span id="dupliFood"></span> Duplicator Food<br>
+      <button id="duplifood" onclick="buyDF()">Buy 1 Duplicator Food<br>Cost: <span id="dfCost"></span> Anti-Energy</button><br><br>
+      <button id="dupliBoost" onclick="newDupliBoost()"></button>
+    </div>
+    <div id="battery" class="tab">
+      <br><br>
+      You have <span id="batteryEnergy"></span> energy, multiplying the gain of anti-energy by <span id="batteryEnergyPower"></span><br>
+      You have <span id="batteryFluid"></span> fluid, giving <span id="batteryFluidPower"></span> battery energy every second.<br>
+      <table id="batteryUpgrades"></table><br>
+      <button id="batteryUpgradesUnlock" onclick="unlockBatteryUpgrade()"></button>
+    </div>
+    <div id="ch1Achievements" class="tab">
+      <br><br>
+      <table id="achievements1" style=" margin: auto;"></table>
+    </div>
+    </div>
+    <div id="ch2" class="metatab" style="width: 100%">
+      <table>
+        <tr>
+          <td><button id="heatDeathtabbtn" onclick="showTab('heatDeath')">Heat Death</button></td>
+          <td><button id="neutrinotabbtn" onclick="showTab('neutrinos')">Neutrino Challenges</button></td>
+        </tr>
+      </table>
+      <div id="heatDeath" class="tab" style="width: 100%">
+      <br><br>
+      <button id="doHeatDeath" class="heatDeath" onclick="heatDeath()">,</button><button id="neutrinoUnl" onclick="unlockNeutrinos()">Unlock Neutrino Challenges<br>Req: Heat Death 5</button><br>
+        You have performed <span id="heatDeaths"></span> heat deaths, producing the below particles.<br><br>
+         <tr>
+           <td><span style="width: 50%; min-height: 450px; background-color: #338f41; float: left; color: white; text-align: center;"><h2 style="color: #baffcb">Theta Particles</h2><br>Amount: <span style="color: #baffcb; font-weight: bold;" id="thetaAmount"></span><br>
+           Boosters: <span style="color: #baffcb; font-weight: bold;" id="thetaBooster"></span><br>Booster Mult: <span style="color: #baffcb; font-weight: bold;" id="thetaBoosterMult"></span><br>
+           <tr>
+             <td><button id="thetaUpg1" class="batteryUpgradesBase" onclick="buyThetaUpg(1)">Zeta Power gain is multiplied based on Theta Boosters.<br>Cost: <span id="thetaUpg1cost"></span> Theta Particles<br>Currently: <span id="thetaUpg1eff"></span>x</button></td>
+             <td><button id="thetaUpg2" class="batteryUpgradesBase" onclick="buyThetaUpg(2)">Theta Boosters use a better formula.<br>Cost: <span id="thetaUpg2cost"></span> Theta Particles</button></td>
+             <td><button id="thetaUpg3" class="batteryUpgradesBase" onclick="buyThetaUpg(3)">Zeta Power gain uses a better formula.<br>Cost: <span id="thetaUpg3cost"></span> Theta Particles</button></td>
+             <td><button id="thetaUpg4" class="batteryUpgradesBase" onclick="buyThetaUpg(4)">Theta Particle gain is boosted based on Theta Boosters.<br>Cost: <span id="thetaUpg4cost"></span> Theta Particles<br>Currently: <span id="thetaUpg4eff"></span>x</button></td>
+             <td><button id="thetaUpg5" class="batteryUpgradesBase" onclick="buyThetaUpg(5)">You start with Quarks and Hadrons unlocked.<br>Cost: <span id="thetaUpg5cost"></span> Theta Particles</button></td>
+           </tr></span></td>
+           <td><span style="width: 50%; min-height: 450px; background-color: #33598f; float: left; color: white; text-align: center;"><h2 style="color: #c1bfff">Delta Particles</h2><br>Amount: <span style="color: #c1bfff; font-weight: bold;" id="deltaAmount"></span><br><br>
+             <tr>
+              <td><button id="deltaUpg1" class="batteryUpgradesBase" onclick="buyDeltaUpg(1)">Delta Particles boost Universe growth speed<br>Cost: <span id="deltaUpg1cost"></span> Delta Particles<br>Currently: <span id="deltaUpg1eff"></span>x</button></td>
+              <td><button id="deltaUpg2" class="batteryUpgradesBase" onclick="buyDeltaUpg(2)">Zeta Particles boost Gluon growth speed<br>Cost: <span id="deltaUpg2cost"></span> Delta Particles<br>Currently: <span id="deltaUpg2eff"></span>x</button></td>
+              <td><button id="deltaUpg3" class="batteryUpgradesBase" onclick="buyDeltaUpg(3)">Theta Particles boost Zeta Particle gain & Hadron gain<br>Cost: <span id="deltaUpg3cost"></span> Delta Particles<br>Currently: <span id="deltaUpg3eff"></span>x</button></td>
+              <td><button id="deltaUpg4" class="batteryUpgradesBase" onclick="buyDeltaUpg(4)">Zeta Particles multiply Quark gain<br>Cost: <span id="deltaUpg4cost"></span> Delta Particles<br>Currently: <span id="deltaUpg4eff"></span>x</button></td>
+              <td><button id="deltaUpg5" class="batteryUpgradesBase" onclick="buyDeltaUpg(5)">You start with the Battery and Photons unlocked on reset<br>Cost: <span id="deltaUpg5cost"></span> Delta Particles</button></td>
+             </tr></span></td>
+         </tr>
+         <tr>
+          <td><span style="width: 100%; min-height: 450px; background-color: #7b338f; float: left; color: white; text-align: center;"><h2 style="color: #e2baf7">Zeta Particles</h2><br>Amount: <span style="color: #e2baf7; font-weight: bold;" id="zetaAmount"></span><br>
+            Power: <span style="color: #e2baf7; font-weight: bold;" id="zetaPower"></span><br>
+            Delta Particle Gain Mult: <span style="color: #e2baf7; font-weight: bold;" id="zetaPowerDeltaEff"></span>x<br>
+            Theta Particle Gain Mult: <span style="color: #e2baf7; font-weight: bold;" id="zetaPowerThetaEff"></span>x<br><br>
+            <table style="text-align: center;"><tr>
+              <td><button id="zetaUpg1" class="batteryUpgradesBase" onclick="buyZetaUpg(1)">Zeta Power boosts Annihilation Energy gain<br>Cost: <span id="zetaUpg1cost"></span> Zeta Particles<br>Currently: <span id="zetaUpg1eff"></span>x</button></td>
+              <td><button id="zetaUpg2" class="batteryUpgradesBase" onclick="buyZetaUpg(2)">Zeta Power boosts Zeta Particle gain<br>Cost: <span id="zetaUpg2cost"></span> Zeta Particles<br>Currently: <span id="zetaUpg2eff"></span>x</button></td>
+              <td><button id="zetaUpg3" class="batteryUpgradesBase" onclick="buyZetaUpg(3)">Both Zeta Power effects use better formulas<br>Cost: <span id="zetaUpg3cost"></span> Zeta Particles</button></td>
+              <td><button id="zetaUpg4" class="batteryUpgradesBase" onclick="buyZetaUpg(4)">You get a free level to each repeatable Void Upgrade<br>Cost: <span id="zetaUpg4cost"></span> Zeta Particles</button></td>
+              <td><button id="zetaUpg5" class="batteryUpgradesBase" onclick="buyZetaUpg(5)">You start with Anti-Quarks unlocked & all Annihilation Upgrades bought on reset<br>Cost: <span id="zetaUpg5cost"></span> Zeta Particles</button></td>
+              <td><button id="zetaUpg6" class="batteryUpgradesBase" onclick="buyZetaUpg(6)">Zeta Power subtracts depths from the depth cost formula<br>Cost: <span id="zetaUpg6cost"></span> Zeta Particles<br>Currently: -<span id="zetaUpg6eff"></span></button></td>
+              <td><button id="zetaUpg7" class="batteryUpgradesBase" onclick="buyZetaUpg(7)">Start with The Void unlocked and all non-repeatable Void Upgrades bought, and you can auto-buy repeatable Void Upgrades<br>Cost: <span id="zetaUpg7cost"></span> Zeta Particles</button><br><button id="autoVoid" class="auto" onclick="toggleAutoVoid()"></button></td>
+              <td><button id="zetaUpg8" class="batteryUpgradesBase" onclick="buyZetaUpg(8)">Gain 100% of Annihilation Energy & Void Power gain every second<br>Cost: <span id="zetaUpg8cost"></span> Zeta Particles</button></td>
+            </tr><tr>
+              <td><button id="zetaUpg9" class="batteryUpgradesBase" onclick="buyZetaUpg(9)">Prestige Depths boost Zeta Power gain<br>Cost: <span id="zetaUpg9cost"></span> Zeta Particles<br>Currently: <span id="zetaUpg9eff"></span>x</button></td>
+              <td><button id="zetaUpg10" class="batteryUpgradesBase" onclick="buyZetaUpg(10)">You gain Photonic Matter 100x faster, and you can auto-buy Photonic Boosters<br>Cost: <span id="zetaUpg10cost"></span> Zeta Particles</button><br><button id="autoPhotons" class="auto" onclick="toggleAutoPhotons()"></button></td>
+              <td><button id="zetaUpg11" class="batteryUpgradesBase" onclick="buyZetaUpg(11)">Zeta Power boosts Battery Speed<br>Cost: <span id="zetaUpg11cost"></span> Zeta Particles<br>Currently: <span id="zetaUpg11eff"></span>x</button></td>
+              <td><button id="zetaUpg12" class="batteryUpgradesBase" onclick="buyZetaUpg(12)">You can auto-buy Battery Upgrades, and Battery Fluid gain is 2x faster.<br>Cost: <span id="zetaUpg12cost"></span> Zeta Particles</button><br><button id="autoBattery" class="auto" onclick="toggleAutoBattery()"></button></td>
+              <td><button id="zetaUpg13" class="batteryUpgradesBase" onclick="buyZetaUpg(13)">Zeta Power cheapens Battery Upgrades<br>Cost: <span id="zetaUpg13cost"></span> Zeta Particles<br>Currently: /<span id="zetaUpg13eff"></span></button></td>
+              <td><button id="zetaUpg14" class="batteryUpgradesBase" onclick="buyZetaUpg(14)">Theta, Delta, and Zeta Particles multiply universe growth speed<br>Cost: <span id="zetaUpg14cost"></span> Zeta Particles<br>Currently: <span id="zetaUpg14eff"></span>x</button></td>
+              <td><button id="zetaUpg15" class="batteryUpgradesBase" onclick="buyZetaUpg(15)">Supercompaction is weaker based on Theta Boosters<br>Cost: <span id="zetaUpg15cost"></span> Zeta Particles<br>Currently: /<span id="zetaUpg15eff"></span></button></td>
+              <td><button id="zetaUpg16" class="batteryUpgradesBase" onclick="buyZetaUpg(16)">Prestige Points are multiplied by Heat Deaths<br>Cost: <span id="zetaUpg16cost"></span> Zeta Particles<br>Currently: <span id="zetaUpg16eff"></span>x</button></td>
+            </tr></table>
+            </span></td>
+         </tr>
+      </div>
+      <div id="neutrinos" class="tab">
+        <br><br>
+        <div id="ncExplanation">
+          Entering a Neutrino Challenge will start a Heat Death reset, and you will have to reach a goal of X depths in order to complete the Neutrino Challenge.<br>
+          Every time you complete a Neutrino Challenge, the goal does not change, but the nerfs get more harsh.<br>
+          Neutrino Challenges after 5 completions make the goal get higher instead of adding more nerfs.
+        </div>
+        <button id="neutChall1" class="neutChalls">
+          <b>Neutrino Challenge 1</b><br>
+          Goal: 420 prestige depths<br>
+          Reward: All production is multiplied by infinity. Game over, you won.<br>
+          0/5 completions
+        </button>
+        <button id="neutChall2" class="neutChalls" tooltip="All time runs 2x faster, after 5 completions heat depth upgrades start getting weaker.">
+          <b>Neutrino Challenge 2</b><br>
+          Goal: 420 prestige depths<br>
+          Reward: All production is multiplied by infinity. Game over, you won.<br>
+          0/5 completions
+        </button>
+        <button id="neutChall3" class="neutChalls">
+          <b>Neutrino Challenge 3</b><br>
+          All non-static pre-HD upgrades are weaker, after 5 completions ???.<br>
+          Goal: 420 prestige depths<br>
+          Reward: All production is multiplied by infinity. Game over, you won.<br>
+          0/5 completions
+        </button>
+        <br>
+        <button id="neutChall4" class="neutChalls">
+          <b>Neutrino Challenge 4</b><br>
+          Anti-Energy production gets worse and worse, after 5 completions anti-energy production is disabled.<br>
+          Goal: 420 prestige depths<br>
+          Reward: All production is multiplied by infinity. Game over, you won.<br>
+          0/5 completions
+        </button>
+        <button id="neutChall5" class="neutChalls">
+          <b>Neutrino Challenge 5</b><br>
+          Obscure depth scaling starts instantly, prestige upgrades are disabled, and photons and duplicators get worse and worse every completion.<br>
+          Goal: 420 prestige depths<br>
+          Reward: All production is multiplied by infinity. Game over, you won.<br>
+          0/5 completions
+        </button>
+        <button id="neutChall6" class="neutChalls">
+          <b>Neutrino Challenge 6</b><br>
+          All pre-Anti Quark mechanics/upgrades are disabled, and every completion makes production worse.<br>
+          Goal: 420 prestige depths<br>
+          Reward: All production is multiplied by infinity. Game over, you won.<br>
+          0/5 completions
+        </button>
+      </div>
+  </div>
+  </body>
+</html>

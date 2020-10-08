@@ -1,0 +1,730 @@
+/* CSS files add styling rules to your content */
+
+*{
+    display: "inline-block"
+}
+
+body, html{
+    font-family: Helvetica, Arial, sans-serif;
+    background: #222222;
+  color: white;
+}
+
+h1 {
+  font-style: italic;
+  color: #373fff;
+}
+
+button {
+  cursor: pointer;
+}
+
+#prestige {
+  color: magenta;
+  border-color: blue;
+  background-color: cyan
+}
+
+#prestigeGoal {
+  background-color: cyan
+}
+
+#prestigeDepth {
+  background-color: cyan
+}
+
+#hardReset {
+  color: red;
+  border-color: red;
+  background-color: white
+}
+
+.options {
+  color: white;
+  border-color: blue;
+  background-color: blue;
+}
+
+#universeSlowDown {
+  color: orange;
+}
+
+#prestigeDepths {
+  color: blue;
+  text-shadow: 0px 0px 14px blue;
+}
+
+#prestigeEff {
+  color: blue;
+  text-shadow: 0px 0px 14px blue;
+}
+
+#prestigePoints {
+  color: magenta;
+  text-shadow: 0px 0px 14px magenta;
+}
+
+#prestigeDiv {
+  color: gray
+}
+
+#respec, #respecConf, #maxAllPU {
+  color: magenta;
+  border-color: blue;
+  background-color: cyan
+}
+
+.prestUpgrs {
+  color: white;
+  border-color: gray;
+  background-color: #9d00ff;
+}
+
+#quarksRed {
+  color: red;
+  text-shadow: 0px 0px 14px red;
+}
+
+#quarksRedMult {
+  color: red;
+  text-shadow: 0px 0px 14px red;
+}
+
+#quarksBlue {
+  color: blue;
+  text-shadow: 0px 0px 14px blue;
+}
+
+#quarksBlueMult {
+  color: blue;
+  text-shadow: 0px 0px 14px blue;
+}
+
+#quarksGreen {
+  color: green;
+  text-shadow: 0px 0px 14px green;
+}
+
+#quarksGreenMult {
+  color: green;
+  text-shadow: 0px 0px 14px green;
+}
+
+#quarks{
+  color: grey
+}
+
+#quarktabbtn {
+  background: repeating-linear-gradient(90deg,#FF0000,#0000FF 33%,#00FF00 66%,#FF0000);
+	background-size: contain;
+  color: white;
+	animation: qrk 3s linear infinite;
+	box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.gluon {
+  color: white;
+  text-shadow: 0px 0px 7px white;
+}
+
+@keyframes qrk { 
+	0%{
+	    background-position: 0% 0%, 0% 0%;
+	}
+	100%{
+	    background-position: 0% 0%, 200% 200%;
+	}
+}
+
+#hadrontabbtn, #buyBooster {
+  background: black;
+	border: 1px solid #e6a52e;
+  color: white;
+	box-shadow: inset 0px 0px 12px 0px black;
+}
+
+#hadronAmt, #hadronPower, #boosterAmt, #boosterPower {
+  color: #e6a52e;
+  text shadow: 0px 0px 14px #e6a52e;
+}
+
+#annihilationtabbtn, .annihilate {
+  background: black;
+  color: #f52516;
+  font-weight: bold;
+	box-shadow: inset 0px 0px 12px 0px red;
+}
+
+.annihilateBought {
+  background: #4db048;
+  color: #f52516;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px white;
+  cursor: default;
+}
+
+.annihilateLocked {
+  background: #7a5450;
+  color: #f52516;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px black;
+  cursor: default;
+}
+
+.annihilateTxt {
+  color: #f52516;
+  font-weight: bold;
+  font-size: 17px;
+  text-shadow: 0px 0px 7px #f52516;
+}
+
+.annihilateUpgBase {
+  width: 160px;
+  height: 120px;
+}
+
+#unlockQuarks {
+  background: repeating-linear-gradient(90deg,#FF0000,#0000FF 33%,#00FF00 66%,#FF0000);
+  background-size: contain;
+  color: white;
+  animation: qrk 3s linear infinite;
+  box-shadow: inset 0px 0px 12px 0px black;
+}
+
+#unlockHadrons {
+  background: black;
+  border: 1px solid #e6a52e;
+  color: white;
+  box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.auto {
+  width: 160px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+#voidUnl, #voidtabbtn {
+  background: black;
+  color: #9d00ff;
+  box-shadow: inset 0px 0px 30px 0px #9d00ff;
+}
+
+#voidtabbtn {
+  border-radius: 10px;
+  box-shadow: none !important;
+}
+
+#sacrificeVoid {
+  border-radius: 100px;
+  height: 150px;
+  width: 150px;
+  background: black;
+  color: #9d00ff;
+  box-shadow: inset 0px 0px 30px 0px #9d00ff;
+  border-width: 1px;
+  border-color: #9d00ff;
+  transition-duration: 0.5s;
+}
+
+#sacrificeVoid:hover {
+  background: #6835ab;
+  color: #f01fdb;
+}
+
+.voidTxt {
+  color: #b914f5;
+  font-weight: bold;
+  font-size: 17px;
+  text-shadow: 0px 0px 7px #b914f5;
+}
+
+.voidUpg {
+  background: black;
+  color: #f716d6;
+  font-weight: bold;
+	box-shadow: inset 0px 0px 12px 0px purple;
+  transition-duration: 0.5s;
+}
+
+.voidUpg:hover {
+  background: #7e23ba !important;
+}
+
+.voidBought {
+  background: #44ab72;
+  color: #f716d6;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px white;
+  cursor: default;
+}
+
+.voidLocked {
+  background: #654b73;
+  color: #f716d6;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px black;
+  cursor: default;
+}
+
+.voidUpgBase {
+  width: 260px;
+  height: 120px;
+}
+
+#photonUnl, #photontabbtn {
+  background: repeating-linear-gradient(45deg,red, yellow, lime, cyan, blue, #9d00ff, magenta, red);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+#photonBoostRed {
+  background: repeating-linear-gradient(45deg,red, orange, red);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+#photonBoostOrange {
+  background: repeating-linear-gradient(45deg,orange, yellow, orange);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+#photonBoostYellow {
+  background: repeating-linear-gradient(45deg,yellow, orange, yellow);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+#photonBoostGreen {
+  background: repeating-linear-gradient(45deg,green, blue, green);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+#photonBoostBlue {
+  background: repeating-linear-gradient(45deg,blue, purple, blue);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+#photonBoostPurple {
+  background: repeating-linear-gradient(45deg,red, yellow, lime, cyan, blue, #9d00ff, magenta, red);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.photonsSection {
+  width: 400px;
+  height: 400px;
+}
+
+.red {
+	background-color: red;
+}
+
+.gn {
+	background-color: green;
+}
+
+.or {
+	background-color: orange;
+}
+
+.gn {
+	background-color: green;
+}
+
+.bl {
+	background-color: blue;
+}
+
+.prp {
+	background-color: purple;
+}
+
+.ylw {
+	background-color: yellow;
+}
+
+.light {
+  color: #fffc69;
+  font-weight: bold;
+  font-size: 17px;
+  text-shadow: 0px 0px 7px #f0f011;
+}
+
+#antiquarkUnl, #antiquarkstabbtn {
+  background: repeating-linear-gradient(90deg,yellow,magenta,cyan);
+    background-size: contain;
+  color: black;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+  transition-duration: 0.5s;
+}
+
+#antiquarkUnl:hover, #antiquarkstabbtn:hover {
+  background: repeating-linear-gradient(90deg,yellow,magenta,cyan);
+  background-size: contain;
+  color: white;
+  animation: qrk 3s linear infinite;
+  box-shadow: inset 0px 0px 12px 0px black;
+}
+
+
+#antiquarksRed {
+  color: cyan;
+  text-shadow: 0px 0px 14px cyan;
+}
+
+#antiquarksGreen {
+  color: magenta;
+  text-shadow: 0px 0px 14px magenta;
+}
+
+#antiquarksBlue {
+  color: yellow;
+  text-shadow: 0px 0px 14px yellow;
+}
+
+#antigluonLength, #antigluonPower {
+  color: grey;
+  text-shadow: 0px 0px 14px grey;
+}
+
+#antienergy {
+  color: orange;
+  text-shadow: 0px 0px 14px orange;
+  font-weight: bold;
+}
+
+.antiEnergyUpgQrk {
+  background: repeating-linear-gradient(90deg,#BB0000,#0000BB 33%,#00BB00 66%,#BB0000);
+  color: white;
+  font-weight: bold;
+	box-shadow: inset 0px 0px 12px 0px purple;
+  transition-duration: 0.5s;
+}
+
+.antiEnergyUpgQrk:hover {
+  background: repeating-linear-gradient(90deg,#DD0000,#0000DD 33%,#00DD00 66%,#DD0000); !important;
+}
+
+.antiEnergyBoughtQrk {
+  background: repeating-linear-gradient(90deg,#FF0000,#0000FF 33%,#00FF00 66%,#FF0000);
+  color: black;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px white;
+  cursor: default;
+}
+
+.antiEnergyLockedQrk {
+  background: repeating-linear-gradient(90deg,#990000,#000099 33%,#009900 66%,#99000);;
+  color: black;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px black;
+  cursor: default;
+}
+
+.antiEnergyUpgHdr {
+  background: repeating-linear-gradient(90deg,#005555,#555500 33%,#550055 66%,#005555);
+  color: orange;
+  border: 1px solid #e6a52e;
+  font-weight: bold;
+	box-shadow: inset 0px 0px 12px 0px purple;
+  transition-duration: 0.5s;
+}
+
+.antiEnergyUpgHdr:hover {
+  background: repeating-linear-gradient(90deg,#007777,#777700 33%,#770077 66%,#007777); !important;
+}
+
+.antiEnergyBoughtHdr {
+  background: black;
+  color: orange;
+  border: 1px solid #e6a52e;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px white;
+  cursor: default;
+}
+
+.antiEnergyLockedHdr {
+  background: repeating-linear-gradient(90deg,#003333,#333300 33%,#330033 66%,#003333);
+  color: orange;
+  border: 1px solid #e6a52e;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px black;
+  cursor: default;
+}
+
+.antiEnergyLockedPht {
+  background: repeating-linear-gradient(90deg,#003333,#333300 33%,#330033 66%,#003333);
+  color: white;
+  border: 1px solid #e6a52e;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px black;
+  cursor: default;
+}
+
+.antiEnergyUpgBase {
+  width: 260px;
+  height: 120px;
+}
+
+.antiEnergyBoughtPht {
+  background: repeating-linear-gradient(45deg,red, yellow, lime, cyan, blue, #9d00ff, magenta, red);
+  color: black;
+  border: 1px solid #e6a52e;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px white;
+  cursor: default;
+}
+
+.antiEnergyLockedAnn {
+  background: #7a5450;
+  color: #f52516;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px black;
+  cursor: default;
+}
+
+.antiEnergyBoughtAnn {
+  background: black;
+  color: #f52516;
+  font-weight: bold;
+	box-shadow: inset 0px 0px 12px 0px red;
+}
+
+.antiEnergyUpgAnn {
+  background: grey;
+  color: #f52516;
+  border-color: #f52516;
+  box-shadow: inset 0px 0px 5px 0px #f52516;
+  cursor: pointer;
+}
+
+.antiEnergyLockedVoid {
+  background: #654b73;
+  color: #f716d6;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px black;
+  cursor: default;
+}
+
+.antiEnergyBoughtVoid {
+  background: black;
+  color: #9d00ff;
+  box-shadow: inset 0px 0px 30px 0px #9d00ff;
+}
+
+.antiEnergyUpgVoid {
+  background: #44ab72;
+  color: #f716d6;
+  box-shadow: inset 0px 0px 30px 0px #9d00ff;
+  cursor: default;
+}
+
+.antiEnergyUpgVoid:hover {
+  color: #ff70ea;
+}
+
+.antiEnergyLockedDup {
+  background: #654b73;
+  color: blue;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px blue;
+  cursor: default;
+}
+
+.antiEnergyBoughtDup {
+  background: cyan;
+  color: blue;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px blue;
+  cursor: default;
+}
+
+.antiEnergyUpgDup {
+  background: cyan;
+  color: blue;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 12px 0px blue;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+.antiEnergyUpgDup:hover {
+  color: black;
+}
+
+#duplitabbtn, #dupliUnl, #duplifood, #dupliBoost {
+  background: cyan;
+  color: blue;
+box-shadow: inset 0px 0px 12px 0px blue;
+}
+
+#dupliAmt {
+  color: #0083af;
+  text-shadow: 0px 0px 7px #0083af;
+}
+
+#batteryUnl, #batterytabbtn, #batteryUpgradesUnlock {
+	border: 2px solid rgba(0, 0, 0, 0.25);
+	border-radius: 4px;
+	box-shadow: inset 0px 0px 24px 0px #cc9900;
+	font-weight: bold;
+	text-shadow: 0px 0px 3px #cccc00, 0px 0px 6px #cccc00;
+	color: #ffff00;
+	animation: energy 4s linear infinite;
+	transition-duration: 0.2s;
+}
+#batteryUnl:hover, #batterytabbtn:hover, #batteryUpgradesUnlock:hover {
+	border-color: rgba(255, 255, 255, 0.25);
+	box-shadow: inset 0px 0px 24px 0px #ffff00;
+	color: black;
+	cursor: pointer
+}
+@keyframes energy { 
+	0%{
+		background-color: #999900;
+	}
+	50% {
+		background-color: #cccc00;
+	}
+	100%{
+		background-color: #999900;
+	}
+}
+
+.batteryUpgradesBase {
+  height: 150px;
+  width: 150px;
+}
+
+.batteryUpgradesLocked {
+  border: 2px solid rgba(0, 0, 0, 0.25);
+	border-radius: 4px;
+	box-shadow: inset 0px 0px 24px 0px #cc9900;
+	font-weight: bold;
+	text-shadow: 0px 0px 3px #cccc00, 0px 0px 6px #cccc00;
+	color: #ffff00;
+	animation: energy 4s linear infinite;
+  cursor: default;
+}
+
+.batteryUpgradesReady {
+  border: 2px solid rgba(0, 0, 0, 0.25);
+	border-radius: 4px;
+	box-shadow: inset 0px 0px 24px 0px green;
+	font-weight: bold;
+	text-shadow: 0px 0px 3px green, 0px 0px 6px green;
+	color: green;
+	background: lime;
+}
+
+#doHeatDeath, #heatDeathtabbtn {
+  background: black;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+     background-image: linear-gradient(red, orange);
+     text-shadow: 0px 0px 7px white;
+}
+
+#ch1Tab, #ch2Tab {
+  background: gray;
+  border-color: yellow;
+  color: red;
+}
+
+.deltaUpgradesBase {
+  height: 145px;
+  width: 145px;
+}
+
+.deltaUpgBought {
+  background: repeating-linear-gradient(45deg,navy, blue, cyan);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.deltaUpgLocked {
+  background: repeating-linear-gradient(45deg,black, navy, blue);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.deltaUpg {
+  background: repeating-linear-gradient(45deg,blue, cyan, white);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.thetaUpgBought {
+  background: repeating-linear-gradient(45deg,darkgreen, green, palegreen);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.thetaUpgLocked {
+  background: repeating-linear-gradient(45deg,black, darkgreen, green);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.thetaUpg {
+  background: repeating-linear-gradient(45deg,green, palegreen, white);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.zetaUpgBought {
+  background: repeating-linear-gradient(45deg,darkorchid, orchid, mediumorchid);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.zetaUpgLocked {
+  background: repeating-linear-gradient(45deg,black, darkorchid, orchid);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
+
+.zetaUpg {
+  background: repeating-linear-gradient(45deg, #ffabfc, #e489fa, white);
+    background-size: contain;
+  color: white;
+    animation: qrk 3s linear infinite;
+    box-shadow: inset 0px 0px 12px 0px black;
+}
