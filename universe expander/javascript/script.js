@@ -711,7 +711,7 @@ function changeTheme(keep=false) { // theme change function
   let theme = get("style")
   saveFile.options.style = getNextTheme(saveFile.options.style||"style")
   if (keep) saveFile.options.style = getNextTheme(saveFile.options.style)
-  theme.href = "/" + saveFile.options.style + ".css"
+  theme.href = saveFile.options.style + ".css"
 }
 
 function unlockVoid() {
@@ -906,5 +906,5 @@ setInterval(function() {
   if (saveFile.autosave) save();
 }, 200)
 let theme = get("style")
-theme.href = "/" + saveFile.options.style + ".css"
+theme.href = saveFile.options.style + ".css"
 updateBatteryUpgrades()
